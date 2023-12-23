@@ -1,0 +1,1 @@
+print('The First day of Python')
