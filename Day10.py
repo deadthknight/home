@@ -17,5 +17,4 @@ def get_route_interface_infor(*ips, username='admin', password='cisco'):
 
 
 if __name__ == "__main__":
-    pprint(get_route_interface_infor("10.10.1.1","10.10.1.2","10.10.1.9",
-                                     username='admin',password='cisco'))
+    pprint(get_route_interface_infor("10.10.1.1","10.10.1.2",username='admin',password='cisco'))
