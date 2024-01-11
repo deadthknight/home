@@ -3,11 +3,18 @@ import re
 
 
 def device_ssh(ip, username, password, port=22, cmd='ls'):
-    ssh = paramiko.SSHClient()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(ip, username=username, password=password, port=port)
-    stdin, stdout, stderr = ssh.exec_command(cmd)
-    return stdout.read().decode()
+    try:
+        ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        ssh.connect(ip, username=username, password=password, port=port)
+        stdin, stdout, stderr = ssh.exec_command(cmd)
+        return stdout.read().decode()
+    except Exception as error:
+        return error
+
+
+
+
 
 
 
@@ -23,6 +30,6 @@ def ssh_get_gateway(ip, username, password, cmd='route -n'):
 
 if __name__ == '__main__':
     print(device_ssh('192.168.85.128', 'root', 'root'))
-    print(device_ssh('192.168.85.128', 'root', 'root',cmd='pwd'))
-    print('网关为：')
-    print(ssh_get_gateway('192.168.85.128', 'root', 'root'))
+    # print(device_ssh('192.168.85.128', 'root', 'root',cmd='pwd'))
+    # print('网关为：')
+    # print(ssh_get_gateway('192.168.85.128', 'root', 'root'))
